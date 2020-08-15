@@ -42,41 +42,41 @@ class Event extends Endpoint
 
     public function view(int $eventId): array
     {
-        return $this->sendGET('v1/events/view', ['event_id' => $eventId]);
+        return $this->sendGET('v1/event/view', ['event_id' => $eventId]);
     }
 
     public function history(int $eventId, array $query = []): array
     {
-        return $this->sendGET('v1/events/history', array_merge(['event_id' => $eventId], $query));
+        return $this->sendGET('v1/event/history', array_merge(['event_id' => $eventId], $query));
     }
 
     public function oddsSummary(int $eventId): array
     {
-        return $this->sendGET('v2/events/odds/summary', ['event_id' => $eventId]);
+        return $this->sendGET('v2/event/odds/summary', ['event_id' => $eventId]);
     }
 
     public function odds(int $eventId, array $query = []): array
     {
-        return $this->sendGET('v2/events/odds', array_merge(['event_id' => $eventId], $query));
+        return $this->sendGET('v2/event/odds', array_merge(['event_id' => $eventId], $query));
     }
 
     public function statsTrends(int $eventId): array
     {
-        return $this->sendGET('v1/events/stats_trend', ['event_id' => $eventId]);
+        return $this->sendGET('v1/event/stats_trend', ['event_id' => $eventId]);
     }
 
     public function lineup(int $eventId): array
     {
-        return $this->sendGET('v1/events/lineup', ['event_id' => $eventId]);
+        return $this->sendGET('v1/event/lineup', ['event_id' => $eventId]);
     }
 
     public function videos(int $eventId): array
     {
-        return $this->sendGET('v1/events/videos', ['event_id' => $eventId]);
+        return $this->sendGET('v1/event/videos', ['event_id' => $eventId]);
     }
 
     public function mergeHistory(array $query = []): array
     {
-        return $this->sendGET('v1/events/merge_history', $query);
+        return $this->sendGET('v1/event/merge_history', $query);
     }
 }
