@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace KodeKeep\BetsAPI;
 
+use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 use KodeKeep\BetsAPI\Endpoints\Endpoint;
 
@@ -20,11 +21,21 @@ class Client
 {
     private string $baseUrl = 'https://api.b365api.com/';
 
-    private $client;
+    private PendingRequest $client;
 
     public function __construct(string $apiToken)
     {
         $this->client = Http::baseUrl($this->baseUrl)->withHeaders(['X-API-Token' => $apiToken]);
+    }
+
+    public function withOptions(array $options)
+    {
+        $this->client->withOptions($options);
+    }
+
+    public function timeout(int $timeout)
+    {
+        $this->client->timeout($timeout);
     }
 
     public function betfair(): Endpoint
