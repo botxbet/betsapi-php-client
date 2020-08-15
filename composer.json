@@ -1,0 +1,63 @@
+{
+    "name": "kodekeep/betsapi-php-client",
+    "description": "PHP Client for BetsAPI",
+    "keywords": [
+        "kodekeep",
+        "betsapi-php-client"
+    ],
+    "homepage": "https://github.com/kodekeep/betsapi-php-client",
+    "license": "MPL-2.0",
+    "authors": [{
+        "name": "Brian Faust",
+        "email": "brian@kodekeep.com",
+        "homepage": "https://kodekeep.com",
+        "role": "Developer"
+    }],
+    "require": {
+        "php": "^7.4",
+        "guzzlehttp/guzzle": "^6.5 || ^7.0",
+        "illuminate/contracts": "^7.0",
+        "illuminate/http": "^7.0",
+        "illuminate/support": "^7.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "graham-campbell/analyzer": "^3.0",
+        "orchestra/testbench": "^5.0",
+        "phpstan/phpstan": "^0.12.11",
+        "phpunit/phpunit": "^9.0",
+        "spatie/phpunit-snapshot-assertions": "^3.1",
+        "symfony/var-dumper": "5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "KodeKeep\\BetsAPI\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "KodeKeep\\BetsAPI\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test:coverage": "vendor/bin/phpunit --coverage-html=.coverage --coverage-clover=clover.xml",
+        "format": "vendor/bin/php-cs-fixer fix ./",
+        "analyse": "vendor/bin/phpstan analyse --memory-limit=2G"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "KodeKeep\\BetsAPI\\Providers\\BetsAPIServiceProvider"
+            ],
+            "aliases": {
+                "BetsAPI": "KodeKeep\\BetsAPI\\Facades\\BetsAPI"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
