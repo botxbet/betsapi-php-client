@@ -18,7 +18,8 @@
         "guzzlehttp/guzzle": "^6.5 || ^7.0",
         "illuminate/contracts": "^7.0",
         "illuminate/http": "^7.0",
-        "illuminate/support": "^7.0"
+        "illuminate/support": "^7.0",
+        "nesbot/carbon": "^2.38"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.16",

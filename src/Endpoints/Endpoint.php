@@ -13,7 +13,9 @@ declare(strict_types=1);
 
 namespace KodeKeep\BetsAPI\Endpoints;
 
+use Carbon\Carbon;
 use Illuminate\Http\Client\PendingRequest;
+use KodeKeep\BetsAPI\Exceptions\RateLimitExceeded;
 
 abstract class Endpoint
 {
@@ -27,6 +29,15 @@ abstract class Endpoint
     protected function sendGET(string $path, array $query = []): array
     {
         $response = $this->client->get($path, $query);
+
+        $remainingRateLimit = intval($response->header('X-RateLimit-Remaining'));
+
+        if ($remainingRateLimit <= 0) {
+            $rateLimitTotal = intval($response->header('X-RateLimit-Limit'));
+            $rateLimitReset = Carbon::createFromTimestamp($response->header('X-RateLimit-Reset'));
+
+            throw new RateLimitExceeded("You have exceeded your {$rateLimitTotal} requests / per hour. It will reset at {$rateLimitReset->toDateTimeString()}.");
+        }
 
         $response->throw();
 
