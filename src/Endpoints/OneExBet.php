@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace KodeKeep\BetsAPI\Endpoints;
 
-class ONEXBET extends Endpoint
+class OneExBet extends Endpoint
 {
     public function inPlay(array $query = []): array
     {
