@@ -70,7 +70,7 @@ class Client
 
     public function onexbet(): Endpoint
     {
-        return new Endpoints\ONExBET($this->client);
+        return new Endpoints\OneExBet($this->client);
     }
 
     public function player(): Endpoint
