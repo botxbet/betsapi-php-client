@@ -31,10 +31,6 @@ class BetsAPIServiceProvider extends ServiceProvider
             ], 'config');
         }
 
-        if (config('betsapi.token')) {
-            $this->app->bind('betsapi', function () {
-                return new Client(config('betsapi.token'));
-            });
-        }
+        $this->app->bind('betsapi', fn () => new Client(config('betsapi.token')));
     }
 }
